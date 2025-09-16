@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-// headerfiles
+// header files added
 // ---------------------- Instrument Cluster Simulation ----------------------
 //workflow
 // Global vehicle state
