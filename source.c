@@ -33,7 +33,7 @@ int main() {
     printf("\n=== Drive Ended ===\n");
     return 0;
 }
-
+//function
 // ---------------------- Function Definitions ----------------------
 
 // Initialize default vehicle state
