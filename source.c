@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-
+#include <math.h>
 // ---------------------- Instrument Cluster Simulation ----------------------
 //workflow
 // Global vehicle state
