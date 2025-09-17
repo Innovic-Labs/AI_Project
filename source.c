@@ -1,4 +1,4 @@
-#include <iostream.h>
+//headerfiles 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -12,8 +12,6 @@ typedef struct {
     int rpm;          // revolutions per minute
     int fuelLevel;    // percentage (0-100)
     int odometer;     // total distance in km
-    bool engineOn;    // engine status
-    bool lowFuel;     // warning light
     bool seatBelt;    // warning light
 } VehicleState;
 
@@ -34,7 +32,7 @@ int main() {
     printf("\n=== Drive Ended ===\n");
     return 0;
 }
-
+//function
 // ---------------------- Function Definitions ----------------------
 
 // Initialize default vehicle state
@@ -82,21 +80,17 @@ void displayCluster(const VehicleState *v) {
     printf("Speed: %3d km/h | RPM: %4d | Fuel: %3d%% | Odo: %5d km ",
            v->speed, v->rpm, v->fuelLevel, v->odometer);
 
-    // Warning indicators
-    if (v->lowFuel)  printf("| [LOW FUEL] ");
-    if (!v->seatBelt) printf("| [SEATBELT WARNING] ");
-    printf("\n");
 }
 
 // Check for warning lights
 void checkWarnings(VehicleState *v) {
-    v->lowFuel = (v->fuelLevel <= 15);
+    v->highFuel = (v->fuelLevel <= 180);
     // Random seatbelt unbuckling for demo
     v->seatBelt = (rand() % 20 != 0); // 1/20 chance unbuckled
 }
 
 // Simulate driving for duration seconds
-void simulateDrive(VehicleState *v, int duration) {
+void sDrive(VehicleState *v, int duration) {
     srand(time(NULL));
     for (int i = 0; i < duration; i++) {
         updateVehicle(v);
