@@ -12,8 +12,8 @@ typedef struct {
     int rpm;          // revolutions per minute
     int fuelLevel;    // percentage (0-100)
     int odometer;     // total distance in km
-    bool engineOn;    // engine status
-    bool lowFuel;     // warning light
+    bool engineOFF;    // engine status
+    bool highFuel;     // warning light
     bool seatBelt;    // warning light
 } VehicleState;
 
@@ -43,14 +43,14 @@ void initVehicle(VehicleState *v) {
     v->rpm = 0;
     v->fuelLevel = 100;
     v->odometer = 0;
-    v->engineOn = true;
-    v->lowFuel = false;
+    v->engineOFF = true;
+    v->highFuel = true;
     v->seatBelt = true; // assume driver wears seatbelt
 }
 
 // Random changes to simulate driving
 void updateVehicle(VehicleState *v) {
-    if (!v->engineOn) {
+    if (!v->engineOFF) {
         v->speed = 0;
         v->rpm = 0;
         return;
@@ -83,14 +83,14 @@ void displayCluster(const VehicleState *v) {
            v->speed, v->rpm, v->fuelLevel, v->odometer);
 
     // Warning indicators
-    if (v->lowFuel)  printf("| [LOW FUEL] ");
+    if (v->highFuel)  printf("| [LOW FUEL] ");
     if (!v->seatBelt) printf("| [SEATBELT WARNING] ");
     printf("\n");
 }
 
 // Check for warning lights
 void checkWarnings(VehicleState *v) {
-    v->lowFuel = (v->fuelLevel <= 15);
+    v->highFuel = (v->fuelLevel <= 15);
     // Random seatbelt unbuckling for demo
     v->seatBelt = (rand() % 20 != 0); // 1/20 chance unbuckled
 }
