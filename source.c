@@ -5,16 +5,7 @@
 #include <math.h>
 // ---------------------- Instrument Cluster Simulation ----------------------
 //workflow
-// Global vehicle state
-typedef struct {
-    int speed;        // km/h
-    int rpm;          // revolutions per minute
-    int fuelLevel;    // percentage (0-100)
-    int odometer;     // total distance in km
-    bool engineOn;    // engine status
-    bool lowFuel;     // warning light
-    bool seatBelt;    // warning light
-} VehicleState;
+
 
 // Function prototypes
 void initVehicle(VehicleState *v);
@@ -47,14 +38,6 @@ void initVehicle(VehicleState *v) {
     v->seatBelt = true; // assume driver wears seatbelt
 }
 
-// Random changes to simulate driving
-void updateVehicle(VehicleState *v) {
-    if (!v->engineOn) {
-        v->speed = 0;
-        v->rpm = 0;
-        return;
-    }
-
     // Simulate acceleration & braking
     int change = (rand() % 21) - 10; // -10 to +10 km/h
     v->speed += change;
@@ -86,20 +69,6 @@ void displayCluster(const VehicleState *v) {
     if (!v->seatBelt) printf("| [SEATBELT WARNING] ");
     printf("\n");
 }
-
-// Check for warning lights
-void checkWarnings(VehicleState *v) {
-    v->lowFuel = (v->fuelLevel <= 15);
-    // Random seatbelt unbuckling for demo
-    v->seatBelt = (rand() % 20 != 0); // 1/20 chance unbuckled
-}
-
-// Simulate driving for duration seconds
-void simulateDrive(VehicleState *v, int duration) {
-    srand(time(NULL));
-    for (int i = 0; i < duration; i++) {
-        updateVehicle(v);
-        displayCluster(v);
-        sleep(1); // delay to simulate time passing
+// Simulate driving for duration second
     }
 }
