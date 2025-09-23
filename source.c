@@ -17,9 +17,7 @@ typedef struct {
 } VehicleState;
 
 // Function prototypes
-void initVehicle(VehicleState *v);
-void updateVehicle(VehicleState *v);
-void displayCluster(const VehicleState *v);
+v);
 void checkWarnings(VehicleState *v);
 void simulateDrive(VehicleState *v, int duration);
 
@@ -55,22 +53,7 @@ void updateVehicle(VehicleState *v) {
         return;
     }
 
-    // Simulate acceleration & braking
-    int change = (rand() % 21) - 10; // -10 to +10 km/h
-    v->speed += change;
-    if (v->speed < 0) v->speed = 0;
-    if (v->speed > 180) v->speed = 180;
-
-    // Approximate RPM as proportional to speed
-    v->rpm = v->speed * 50;
-    if (v->rpm > 7000) v->rpm = 7000;
-
-    // Fuel consumption
-    v->fuelLevel -= (rand() % 3); // 0-2% per tick
-    if (v->fuelLevel < 0) v->fuelLevel = 0;
-
-    // Odometer update
-    v->odometer += v->speed / 10; // approx km per tick
+  
 
     // Check warnings
     checkWarnings(v);
