@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 /* Simple software framebuffer implementation and state machine.
    NOTE: Many helper functions are static/internal - they are suitable for unit testing.
