@@ -1,14 +1,6 @@
 #include "adas.h"
 #include <stdio.h>
 
-ADAS_StatusType ADAS_Init(ADAS_HandleType *h) {
-    if (h == NULL) return ADAS_FAULT_SENSOR;
-    h->initialized = true;
-    h->lane_keep_enabled = false;
-    h->adaptive_cruise_enabled = false;
-    h->desired_distance_cm = 150;
-    
-}
 
 ADAS_StatusType ADAS_EnableLaneKeep(ADAS_HandleType *h, bool enable) {
     if (h == NULL || !h->initialized) return ADAS_FAULT_SENSOR;

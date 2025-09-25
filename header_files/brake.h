@@ -12,11 +12,6 @@ typedef enum {
     BRAKE_FAULT_ACTUATOR
 } Brake_StatusType;
 
-typedef struct {
-    bool initialized;
-    uint16_t pressure_kPa; /* current hydraulic pressure */
-    bool absEngaged;
-} Brake_HandleType;
 
 Brake_StatusType Brake_Init(Brake_HandleType *h);
 Brake_StatusType Brake_SetPressure(Brake_HandleType *h, uint16_t pressure_kPa);
