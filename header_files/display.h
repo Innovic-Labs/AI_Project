@@ -1,3 +1,9 @@
+#ifndef DISPLAY_H
+#define DISPLAY_H
+
+#include <stdbool.h>
+#include <stdint.h>
+
 /* ========================= display.h ========================= */
 /* Display ECU interface - provides text/graphics primitives to higher layers */
 
