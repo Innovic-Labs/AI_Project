@@ -7,7 +7,8 @@ ADAS_StatusType ADAS_Init(ADAS_HandleType *h) {
     h->lane_keep_enabled = false;
     h->adaptive_cruise_enabled = false;
     h->desired_distance_cm = 150;
-    
+    return ADAS_OK;
+
 }
 
 ADAS_StatusType ADAS_EnableLaneKeep(ADAS_HandleType *h, bool enable) {

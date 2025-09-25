@@ -5,7 +5,9 @@ Brake_StatusType Brake_Init(Brake_HandleType *h) {
     if (h == NULL) return BRAKE_FAULT_SENSOR;
     h->initialized = true;
     h->pressure_kPa = 0;
+    h->absEngaged = true;
     h->absEngaged = false;
+    printf("Brake: initialized\n");
     return BRAKE_OK;
 }
 
