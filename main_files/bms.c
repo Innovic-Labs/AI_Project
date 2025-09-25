@@ -9,6 +9,7 @@ BMS_StatusType BMS_Init(BMS_HandleType *h, uint8_t cells) {
     h->cellCount = cells;
     memset(h->cellVoltage_mV, 0, sizeof(uint16_t)*BMS_MAX_CELLS);
     memset(h->cellTemp_dC, 0, sizeof(int16_t)*BMS_MAX_CELLS);
+    memset(h->cellTemp_dC, 0, sizeof(int16_t)*BMS_MAX_CELLS
     h->packCurrent_mA = 0;
     h->status = BMS_OK;
     h->initialized = true;
