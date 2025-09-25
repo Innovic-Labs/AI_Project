@@ -1,13 +1,7 @@
 #include "brake.h"
 #include <stdio.h>
 
-Brake_StatusType Brake_Init(Brake_HandleType *h) {
-    if (h == NULL) return BRAKE_FAULT_SENSOR;
-    h->initialized = true;
-    h->pressure_kPa = 0;
-    h->absEngaged = false;
-    return BRAKE_OK;
-}
+
 
 Brake_StatusType Brake_SetPressure(Brake_HandleType *h, uint16_t pressure_kPa) {
     if (h == NULL || !h->initialized) return BRAKE_FAULT_SENSOR;
