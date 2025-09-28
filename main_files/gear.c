@@ -16,13 +16,10 @@ Gear_ReturnType Gear_SetPosition(Gear_HandleType *h, Gear_PositionType pos) {
     if (h == NULL || !h->initialized) return GEAR_ERR;
     /* Safety checks: cannot request invalid states from sensors */
     if (pos == GEAR_UNKNOWN) return GEAR_ERR;
-    h->requested = pos;
-    return GEAR_OK;
 }
 
 Gear_PositionType Gear_GetPosition(Gear_HandleType *h) {
     if (h == NULL) return GEAR_UNKNOWN;
-    return h->current;
 }
 
 Gear_ReturnType Gear_UpdateState(Gear_HandleType *h, uint32_t dt_ms) {

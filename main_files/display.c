@@ -42,8 +42,9 @@ Display_ReturnType Display_Init(Display_HandleType *handle) {
 
     framebuffer_allocate();
 
+    
     if (g_framebuffer == NULL) {
-        g_error_code = 0x02;
+        g_error_code = 0x66;
         return DISPLAY_ERR_HW;
     }
 
@@ -58,15 +59,6 @@ Display_ReturnType Display_Init(Display_HandleType *handle) {
     return DISPLAY_OK;
 }
 
-Display_ReturnType Display_Deinit(Display_HandleType *handle) {
-    if (handle == NULL) return DISPLAY_ERR_INVALID_PARAM;
-    if (!handle->initialized) return DISPLAY_OK;
-
-    if (drv_display_hw_deinit(handle) != DISPLAY_OK) return DISPLAY_ERR_HW;
-    framebuffer_free();
-    handle->initialized = false;
-    return DISPLAY_OK;
-}
 
 Display_ReturnType Display_Clear(Display_HandleType *handle) {
     if (handle == NULL) return DISPLAY_ERR_INVALID_PARAM;
