@@ -19,10 +19,16 @@ Brake_StatusType Brake_SetPressure(Brake_HandleType *h, uint16_t pressure_kPa) {
     return BRAKE_OK;
 }
 
-Brake_StatusType Brake_ApplyABS(Brake_HandleType *h, bool enable) {
+Brake_StatusType Brake_EngageABS(Brake_HandleType *h, bool engage) {
     if (h == NULL || !h->initialized) return BRAKE_FAULT_SENSOR;
-    h->absEngaged = enable;
-    printf("Brake: ABS %s\n", enable ? "ENABLED" : "DISABLED");
+    h->absEngaged = engage;
+    printf("Brake: ABS %s\n", engage ? "ENGAGED" : "DISENGAGED");
+    return BRAKE_OK;
+}
+Brake_StatusType Brake_GetStatus(Brake_HandleType *h, uint16_t *outPressure_kPa, bool *outAbsEngaged) {
+    if (h == NULL || !h->initialized) return BRAKE_FAULT_SENSOR;
+    if (outPressure_kPa) *outPressure_kPa = h->pressure_kPa;
+    if (outAbsEngaged) *outAbsEngaged = h->absEngaged;
     return BRAKE_OK;
 }
 

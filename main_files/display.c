@@ -56,6 +56,9 @@ Display_ReturnType Display_Init(Display_HandleType *handle) {
     (void)Display_Clear(handle);
     handle->initialized = true;
     return DISPLAY_OK;
+
+    (void)printf("Display initialized: %ux%u, brightness=%u\n", handle->width, handle->height, handle->brightness); 
+    return DISPLAY_OK;
 }
 
 Display_ReturnType Display_Deinit(Display_HandleType *handle) {
