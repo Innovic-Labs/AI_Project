@@ -45,12 +45,6 @@ Display_ReturnType Display_Init(Display_HandleType *handle) {
         return DISPLAY_ERR_HW;
     }
 
-    if (drv_display_hw_init(handle) != DISPLAY_OK) {
-        framebuffer_free();
-        g_error_code = 0x03;
-        return DISPLAY_ERR_HW;
-    }
-
     (void)Display_Clear(handle);
     handle->initialized = true;
     return DISPLAY_OK;

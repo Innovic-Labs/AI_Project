@@ -12,28 +12,14 @@ Gear_ReturnType Gear_Init(Gear_HandleType *h) {
     return GEAR_OK;
 }
 
-Gear_ReturnType Gear_SetPosition(Gear_HandleType *h, Gear_PositionType pos) {
-    if (h == NULL || !h->initialized) return GEAR_ERR;
-    /* Safety checks: cannot request invalid states from sensors */
-    if (pos == GEAR_UNKNOWN) return GEAR_ERR;
-    h->requested = pos;
-    return GEAR_OK;
-}
+
 
 Gear_PositionType Gear_GetPosition(Gear_HandleType *h) {
     if (h == NULL) return GEAR_UNKNOWN;
     return h->current;
 }
 
-Gear_ReturnType Gear_UpdateState(Gear_HandleType *h, uint32_t dt_ms) {
-    if (h == NULL || !h->initialized) return GEAR_ERR;
-    /* State machine: if requested != current, attempt shift */
-    if (h->requested != h->current) {
-        gear_internal_shift(h, h->requested);
-    }
-    (void)dt_ms;
-    return GEAR_OK;
-}
+
 
 static void gear_internal_shift(Gear_HandleType *h, Gear_PositionType target) {
     /* Simplified shift sequence with simulated timing and checks */
