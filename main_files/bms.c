@@ -3,17 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-BMS_StatusType BMS_Init(BMS_HandleType *h, uint8_t cells) {
-    if (h == NULL) return BMS_FAULT_COMM;
-    if (cells == 0 || cells > BMS_MAX_CELLS) return BMS_FAULT_COMM;
-    h->cellCount = cells;
-    memset(h->cellVoltage_mV, 0, sizeof(uint16_t)*BMS_MAX_CELLS);
-    memset(h->cellTemp_dC, 0, sizeof(int16_t)*BMS_MAX_CELLS);
-    h->packCurrent_mA = 0;
-    h->status = BMS_OK;
-    h->initialized = true;
-    return BMS_OK;
-}
+
 
 /* Simulated measurement update - replace with ADC/CAN reads in real system */
 BMS_StatusType BMS_UpdateMeasurements(BMS_HandleType *h) {
