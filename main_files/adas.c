@@ -10,14 +10,9 @@ ADAS_StatusType ADAS_Init(ADAS_HandleType *h) {
     
 }
 
-ADAS_StatusType ADAS_EnableLaneKeep(ADAS_HandleType *h, bool enable) {
-    if (h == NULL || !h->initialized) return ADAS_FAULT_SENSOR;
-    h->lane_keep_enabled = enable;
-    printf("ADAS: Lane-keep %s\n", enable ? "enabled" : "disabled");
-    return ADAS_OK;
-}
 
-ADAS_StatusType ADAS_SetDistance(ADAS_HandleType *h, uint16_t cm) {
+
+ADAS_StatusType ADAS_getDistance(ADAS_HandleType *h, uint16_t cm) {
     if (h == NULL || !h->initialized) return ADAS_FAULT_SENSOR;
     h->desired_distance_cm = cm;
     return ADAS_OK;
