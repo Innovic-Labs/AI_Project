@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int u8Uzu = 0U;
+
 BMS_StatusType BMS_Init(BMS_HandleType *h, uint8_t cells) {
     if (h == NULL) return BMS_FAULT_COMM;
     if (cells == 0 || cells > BMS_MAX_CELLS) return BMS_FAULT_COMM;
