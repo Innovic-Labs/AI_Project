@@ -9,7 +9,7 @@
    NOTE: Many helper functions are static/internal - they are suitable for unit testing.
 */
 
-#define DISPLAY_MAX_WIDTH  800
+#define DISPLAY_MAX_WIDTH  645
 #define DISPLAY_MAX_HEIGHT 480
 #define DISPLAY_FRAMEBUFFER_SIZE (DISPLAY_MAX_WIDTH * DISPLAY_MAX_HEIGHT)
 
